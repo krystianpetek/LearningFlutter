@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:two_foodapp/foodapp_theme.dart';
 
 class Home extends StatefulWidget {
   final Function darkModeFn;
@@ -56,6 +55,23 @@ class HomeState extends State<Home> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_giftcard),
+            label: 'Card 1',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_giftcard),
+            label: 'Card 2',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_giftcard),
+            label: 'Card 3',
+          ),
+        ],
       ),
     );
   }

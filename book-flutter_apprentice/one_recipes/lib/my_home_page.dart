@@ -22,14 +22,6 @@ class _MyHomePageState extends State<MyHomePage> {
           itemCount: Recipe.samples.length,
           itemBuilder: (BuildContext context, int index) {
             return buildRecipeCart(Recipe.samples[index]);
-            // return Card(
-            //   child: Column(
-            //     children: [
-            //       Image.asset(Recipe.samples[index].imageUrl),
-            //       Text(Recipe.samples[index].label),
-            //     ],
-            //   ),
-            // );
           },
         ),
       ),

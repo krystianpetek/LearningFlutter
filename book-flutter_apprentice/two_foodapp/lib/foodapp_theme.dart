@@ -106,11 +106,6 @@ class FoodAppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      // checkboxTheme: CheckboxThemeData(
-      //   fillColor: MaterialStateColor.resolveWith(
-      //     (states) => Colors.black,
-      //   ),
-      // ),
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
         backgroundColor: Color(0xFF303030),

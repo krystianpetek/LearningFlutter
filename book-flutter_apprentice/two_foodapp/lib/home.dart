@@ -14,15 +14,12 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  ThemeData newTheme = FoodAppTheme.light();
   String mode = 'Current state: LightMode';
 
   darkMode() {
-    if (newTheme.brightness.name == Brightness.dark.name) {
-      newTheme = FoodAppTheme.light();
+    if (Theme.of(context).brightness.name == Brightness.dark.name) {
       mode = 'Current state: LightMode';
     } else {
-      newTheme = FoodAppTheme.dark();
       mode = 'Current state: DarkMode';
     }
     setState(() {});
@@ -34,7 +31,7 @@ class HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(
           'FoodApp',
-          style: newTheme.textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
       body: Center(
@@ -43,19 +40,19 @@ class HomeState extends State<Home> {
           children: <Widget>[
             Text(
               'Let\'s get cooking!',
-              style: newTheme.textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             ElevatedButton(
               onPressed: () {
                 darkMode();
                 widget.darkModeFn();
               },
-              style: newTheme.elevatedButtonTheme.style,
+              style: Theme.of(context).elevatedButtonTheme.style,
               child: const Text('click'),
             ),
             Text(
               mode,
-              style: newTheme.textTheme.headlineSmall,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ],
         ),

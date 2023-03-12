@@ -108,7 +108,7 @@ class FoodAppTheme {
       brightness: Brightness.dark,
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF303030),
+        backgroundColor: Color(0xFF282828),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:two_foodapp/foodapp_theme.dart';
 
 class Card1 extends StatelessWidget {
   const Card1({super.key});
@@ -12,13 +13,44 @@ class Card1 extends StatelessWidget {
     return Center(
       child: Container(
         padding: const EdgeInsets.all(16),
-        constraints: const BoxConstraints.expand(height: 350, width: 450),
+        constraints: const BoxConstraints.expand(width: 350, height: 450),
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/img1.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
+        child: Stack(
+          children: [
+            Text(
+              category,
+              style: FoodAppTheme.darkTextTheme.bodySmall,
+            ),
+            Positioned(
+              top: 20,
+              child: Text(
+                title,
+                style: FoodAppTheme.darkTextTheme.headlineMedium,
+              ),
+            ),
+            Positioned(
+              bottom: 30,
+              right: 0,
+              child: Text(
+                description,
+                style: FoodAppTheme.darkTextTheme.bodySmall,
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              right: 0,
+              child: Text(
+                chef,
+                style: FoodAppTheme.darkTextTheme.bodySmall,
+              ),
+            ),
+          ],
         ),
       ),
     );

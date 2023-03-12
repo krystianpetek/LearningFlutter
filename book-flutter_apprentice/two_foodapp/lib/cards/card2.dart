@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:two_foodapp/cards/author_card.dart';
 
 class Card2 extends StatelessWidget {
   const Card2({super.key});
@@ -17,7 +18,11 @@ class Card2 extends StatelessWidget {
             Radius.circular(10.0),
           ),
         ),
-        child: Column(),
+        child: const AuthorCard(
+          authorName: 'Krystian Petek',
+          title: '.NET Developer',
+          imageProvider: AssetImage('assets/author.jpg'),
+        ),
       ),
     );
   }

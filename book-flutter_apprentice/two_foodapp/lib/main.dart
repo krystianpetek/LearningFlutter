@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:two_foodapp/actions/dark_mode.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 import 'package:two_foodapp/home.dart';
 
@@ -32,7 +33,10 @@ class FoodAppState extends State<FoodApp> {
     return MaterialApp(
       theme: newTheme,
       title: 'FoodApp',
-      home: Home(darkModeFn: darkMode),
+      home: const Home(),
+      actions: <Type, Action<Intent>>{
+        DarkModeIntent: DarkModeAction(darkMode: darkMode)
+      },
     );
   }
 }

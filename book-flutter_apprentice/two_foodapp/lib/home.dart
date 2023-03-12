@@ -14,13 +14,13 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  int _selectedCardIndex = 0;
+  int _selectedCardIndex = 1;
 
   static List<Widget> pages = <Widget>[
-    const HomeCard(),
-    const Card2(),
     const Card3(),
+    const Card2(),
     const Card1(),
+    const HomeCard(),
   ];
 
   void _onNavBarTapped(int index) {
@@ -35,7 +35,7 @@ class HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'FoodApp',
+          'DemoApp / FoodApp / CodeApp',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),

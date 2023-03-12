@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:two_foodapp/home_page.dart';
+import 'package:two_foodapp/cards/card1.dart';
+import 'package:two_foodapp/cards/home_card.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -14,8 +15,8 @@ class HomeState extends State<Home> {
   int _selectedCardIndex = 0;
 
   static List<Widget> pages = <Widget>[
-    const HomePage(),
-    Container(color: Colors.red),
+    const Card1(),
+    const HomeCard(),
     Container(color: Colors.blue),
   ];
 
@@ -39,15 +40,15 @@ class HomeState extends State<Home> {
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
-            label: 'Card 2',
+            label: 'Card 1',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
             label: 'Card 3',
           ),
         ],

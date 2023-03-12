@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/actions/dark_mode.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class HomeCard extends StatefulWidget {
+  const HomeCard({
     super.key,
   });
 
   @override
-  HomePageState createState() => HomePageState();
+  HomeCardState createState() => HomeCardState();
 }
 
-class HomePageState extends State<HomePage> {
+class HomeCardState extends State<HomeCard> {
   String _mode = 'Current state: LightMode';
 
   darkMode() {
@@ -33,7 +33,7 @@ class HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              'Let\'s get cooking!',
+              'Let\'s change the settings!',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             ElevatedButton(

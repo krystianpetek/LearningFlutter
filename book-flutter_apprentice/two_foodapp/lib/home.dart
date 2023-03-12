@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/cards/card1.dart';
+import 'package:two_foodapp/cards/card2.dart';
 import 'package:two_foodapp/cards/home_card.dart';
 
 class Home extends StatefulWidget {
@@ -17,7 +18,7 @@ class HomeState extends State<Home> {
   static List<Widget> pages = <Widget>[
     const Card1(),
     const HomeCard(),
-    Container(color: Colors.blue),
+    const Card2(),
   ];
 
   void _onNavBarTapped(int index) {

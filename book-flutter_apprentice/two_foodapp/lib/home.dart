@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/cards/card1.dart';
 import 'package:two_foodapp/cards/card2.dart';
+import 'package:two_foodapp/cards/card3.dart';
 import 'package:two_foodapp/cards/home_card.dart';
 
 class Home extends StatefulWidget {
@@ -16,9 +17,10 @@ class HomeState extends State<Home> {
   int _selectedCardIndex = 0;
 
   static List<Widget> pages = <Widget>[
-    const Card1(),
     const HomeCard(),
     const Card2(),
+    const Card3(),
+    const Card1(),
   ];
 
   void _onNavBarTapped(int index) {
@@ -40,18 +42,24 @@ class HomeState extends State<Home> {
       body: pages[_selectedCardIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
             label: 'Card 1',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.person),
+            label: 'About',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.trending_up_outlined),
+            label: 'Card 3',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Card 3',
+            label: 'Settings',
           ),
         ],
         onTap: _onNavBarTapped,

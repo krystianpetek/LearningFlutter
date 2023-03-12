@@ -12,6 +12,7 @@ class Card2 extends StatelessWidget {
           constraints: const BoxConstraints.expand(width: 350, height: 450),
           decoration: const BoxDecoration(
             image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.softLight),
               image: AssetImage('assets/img2.png'),
               fit: BoxFit.cover,
             ),
@@ -24,7 +25,7 @@ class Card2 extends StatelessWidget {
               const AuthorCard(
                 authorName: 'Krystian Petek',
                 title: '.NET Developer',
-                imageProvider: AssetImage('assets/author.jpg'),
+                imageProvider: AssetImage('assets/author.png'),
               ),
               Expanded(
                 child: Stack(children: [
@@ -32,7 +33,7 @@ class Card2 extends StatelessWidget {
                     bottom: 16,
                     right: 16,
                     child: Text(
-                      'Recipe',
+                      'App',
                       style: FoodAppTheme.lightTextTheme.headlineLarge,
                     ),
                   ),
@@ -42,7 +43,7 @@ class Card2 extends StatelessWidget {
                     child: RotatedBox(
                       quarterTurns: 3,
                       child: Text(
-                        'Smoothies',
+                        'Demonstrate',
                         style: FoodAppTheme.lightTextTheme.headlineLarge,
                       ),
                     ),

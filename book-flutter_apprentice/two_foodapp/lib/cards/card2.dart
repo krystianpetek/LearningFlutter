@@ -13,7 +13,7 @@ class Card2 extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Colors.white, BlendMode.softLight),
-            image: AssetImage('assets/img2.png'),
+            image: AssetImage('assets/images/img2.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(
@@ -25,7 +25,7 @@ class Card2 extends StatelessWidget {
             const AuthorCard(
               authorName: 'Krystian Petek',
               title: '.NET Developer',
-              imageProvider: AssetImage('assets/author.png'),
+              imageProvider: AssetImage('assets/images/author.png'),
             ),
             Expanded(
               child: Stack(children: [

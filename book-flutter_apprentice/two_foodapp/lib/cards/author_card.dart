@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:two_foodapp/circle_image.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 
-class AuthorCard extends StatelessWidget {
+class AuthorCard extends StatefulWidget {
   const AuthorCard({
     super.key,
     required this.authorName,
@@ -13,6 +13,13 @@ class AuthorCard extends StatelessWidget {
   final String authorName;
   final String title;
   final ImageProvider? imageProvider;
+
+  @override
+  State<AuthorCard> createState() => _AuthorCardState();
+}
+
+class _AuthorCardState extends State<AuthorCard> {
+  bool _isFavorited = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +34,18 @@ class AuthorCard extends StatelessWidget {
             children: [
               CircleImage(
                 imageRadius: 28,
-                imageProvider: imageProvider,
+                imageProvider: widget.imageProvider,
               ),
               const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    authorName,
+                    widget.authorName,
                     style: FoodAppTheme.lightTextTheme.headlineMedium,
                   ),
                   Text(
-                    title,
+                    widget.title,
                     style: FoodAppTheme.lightTextTheme.headlineSmall,
                   ),
                 ],
@@ -47,11 +54,16 @@ class AuthorCard extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
+              _isFavorited = !_isFavorited;
+              setState(() {});
               const snackBar = SnackBar(content: Text('Favorite Pressed'));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
-            icon: const Icon(Icons.favorite_border),
+            icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
             iconSize: 30,
+            color: Colors.red,
+            style: ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(Colors.white)),
           )
         ],
       ),

@@ -47,7 +47,6 @@ class HomeCardState extends State<HomeCard> {
             ElevatedButton(
               onPressed: () {
                 widget.changeCards();
-                Actions.invoke(context, DarkModeIntent(darkMode: () {}));
               },
               style: Theme.of(context).elevatedButtonTheme.style,
               child: const Text('change cards'),

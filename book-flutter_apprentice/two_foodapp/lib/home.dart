@@ -16,74 +16,72 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   int _selectedCardIndex = 1;
 
-  static List<Widget> pages1 = <Widget>[
-    const Card3(),
-    const Card2(),
-    const Card1(),
-    const HomeCard(changeCards: changeCards),
-  ];
-
-  static List<BottomNavigationBarItem> bottomNavItems1 =
-      <BottomNavigationBarItem>[
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.dashboard),
-      label: 'Card 1',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      label: 'About',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.trending_up_outlined),
-      label: 'Card 3',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: 'Settings',
-    ),
-  ];
-
-  static List<Widget> pages2 = <Widget>[
-    const Card1(),
-    const Card1(),
-    const Card1(),
-    const HomeCard(changeCards: changeCards),
-  ];
-
-  static List<BottomNavigationBarItem> bottomNavItems2 =
-      <BottomNavigationBarItem>[
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.explore),
-      label: 'Explore',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.book),
-      label: 'Recipes',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.list),
-      label: 'To buy',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: 'Settings',
-    ),
-  ];
-
-  void _onNavBarTapped(int index) {
-    _selectedCardIndex = index;
-
-    setState(() {});
-  }
+  List<Widget>? pages1;
+  List<Widget>? pages2;
+  List<BottomNavigationBarItem>? bottomNavItems1;
+  List<BottomNavigationBarItem>? bottomNavItems2;
 
   @override
   void initState() {
-    widgetPages = pages1;
-    widgetNavBarItems = bottomNavItems1;
+    pages1 = <Widget>[
+      const Card3(),
+      const Card2(),
+      const Card1(),
+      HomeCard(changeCards: changeCards),
+    ];
+
+    bottomNavItems1 = <BottomNavigationBarItem>[
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.dashboard),
+        label: 'Card 1',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.person),
+        label: 'About',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.trending_up_outlined),
+        label: 'Card 3',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.settings),
+        label: 'Settings',
+      ),
+    ];
+
+    pages2 = <Widget>[
+      const Card1(),
+      const Card1(),
+      const Card1(),
+      HomeCard(changeCards: changeCards),
+    ];
+
+    bottomNavItems2 = <BottomNavigationBarItem>[
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.explore),
+        label: 'Explore',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.book),
+        label: 'Recipes',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.list),
+        label: 'To buy',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.settings),
+        label: 'Settings',
+      ),
+    ];
+
+    widgetPages = pages1!;
+    widgetNavBarItems = bottomNavItems1!;
+
     super.initState();
   }
 
-  static void changeCards() {
+  void changeCards() {
     if (widgetPages == pages1) {
       widgetPages = pages2;
       widgetNavBarItems = bottomNavItems2;
@@ -91,13 +89,19 @@ class HomeState extends State<Home> {
       widgetPages = pages1;
       widgetNavBarItems = bottomNavItems1;
     }
+    setState(() {});
   }
 
-  static List<Widget> widgetPages = [];
-  static List<BottomNavigationBarItem> widgetNavBarItems = [];
+  List<Widget>? widgetPages = [];
+  List<BottomNavigationBarItem>? widgetNavBarItems = [];
 
   @override
   Widget build(BuildContext context) {
+    void onNavBarTapped(int index) {
+      _selectedCardIndex = index;
+      setState(() {});
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -106,16 +110,15 @@ class HomeState extends State<Home> {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
-      body: widgetPages[_selectedCardIndex],
+      body: widgetPages![_selectedCardIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
-        items: widgetNavBarItems,
-        onTap: _onNavBarTapped,
+        items: widgetNavBarItems!,
+        onTap: onNavBarTapped,
         currentIndex: _selectedCardIndex,
       ),
-      // ),
     );
   }
 }

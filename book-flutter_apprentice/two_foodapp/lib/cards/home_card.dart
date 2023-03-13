@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:two_foodapp/actions/dark_mode.dart';
 
 class HomeCard extends StatefulWidget {
-  const HomeCard({
-    super.key,
-  });
+  const HomeCard({super.key, required this.changeCards});
+
+  final Function changeCards;
 
   @override
   HomeCardState createState() => HomeCardState();
@@ -43,6 +43,14 @@ class HomeCardState extends State<HomeCard> {
               },
               style: Theme.of(context).elevatedButtonTheme.style,
               child: const Text('click'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                widget.changeCards();
+                Actions.invoke(context, DarkModeIntent(darkMode: () {}));
+              },
+              style: Theme.of(context).elevatedButtonTheme.style,
+              child: const Text('change cards'),
             ),
             Text(
               _mode,

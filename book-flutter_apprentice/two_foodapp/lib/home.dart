@@ -3,6 +3,7 @@ import 'package:two_foodapp/cards/card1.dart';
 import 'package:two_foodapp/cards/card2.dart';
 import 'package:two_foodapp/cards/card3.dart';
 import 'package:two_foodapp/cards/home_card.dart';
+import 'package:two_foodapp/screens/explore_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -50,7 +51,7 @@ class HomeState extends State<Home> {
     ];
 
     pages2 = <Widget>[
-      const Card1(),
+      ExploreScreen(),
       const Card1(),
       const Card1(),
       HomeCard(changeCards: changeCards),

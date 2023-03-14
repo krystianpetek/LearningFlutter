@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:two_foodapp/cards/card1.dart';
-import 'package:two_foodapp/cards/card2.dart';
-import 'package:two_foodapp/cards/card3.dart';
-import 'package:two_foodapp/cards/home_card.dart';
+import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/screens/explore_screen.dart';
 
 class Home extends StatefulWidget {

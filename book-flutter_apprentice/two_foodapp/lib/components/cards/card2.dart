@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:two_foodapp/cards/author_card.dart';
+import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 
 class Card2 extends StatelessWidget {

@@ -4,8 +4,8 @@ import 'package:two_foodapp/foodapp_theme.dart';
 class Card1 extends StatelessWidget {
   const Card1({super.key});
   final String category = 'Editor\'s Choice';
-  final String title = 'The Art of Dough';
-  final String description = 'Learn to make the perfect bread.';
+  final String title = 'The Art of Coding';
+  final String description = 'Learn to make the perfect code.';
   final String chef = 'Krystian Petek';
 
   @override
@@ -16,7 +16,7 @@ class Card1 extends StatelessWidget {
         constraints: const BoxConstraints.expand(width: 350, height: 450),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/img1.png'),
+            image: AssetImage('assets/images/img1.jpg'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),

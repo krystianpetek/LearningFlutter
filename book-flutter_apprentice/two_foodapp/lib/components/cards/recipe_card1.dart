@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 
+import '../../models/models.dart';
+
 class RecipeCard1 extends StatelessWidget {
-  const RecipeCard1({super.key});
-  final String category = 'Editor\'s Choice';
-  final String title = 'The Art of Dough';
-  final String description = 'Learn to make the perfect bread.';
+  const RecipeCard1({super.key, required this.recipe});
+  final ExploreRecipe recipe;
+
   final String chef = 'Krystian Petek';
 
   @override
@@ -14,23 +15,23 @@ class RecipeCard1 extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         constraints: const BoxConstraints.expand(width: 350, height: 450),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/magazine_pics/mag1.png'),
+            image: AssetImage(recipe.backgroundImage),
             fit: BoxFit.cover,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         ),
         child: Stack(
           children: [
             Text(
-              category,
+              recipe.title,
               style: FoodAppTheme.darkTextTheme.bodySmall,
             ),
             Positioned(
               top: 20,
               child: Text(
-                title,
+                recipe.title,
                 style: FoodAppTheme.darkTextTheme.headlineMedium,
               ),
             ),
@@ -38,7 +39,7 @@ class RecipeCard1 extends StatelessWidget {
               bottom: 30,
               right: 0,
               child: Text(
-                description,
+                recipe.message,
                 style: FoodAppTheme.darkTextTheme.bodySmall,
               ),
             ),

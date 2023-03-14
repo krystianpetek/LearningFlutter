@@ -22,16 +22,16 @@ class HomeState extends State<Home> {
   @override
   void initState() {
     pages1 = <Widget>[
-      const Card3(),
-      const Card2(),
       const Card1(),
+      const Card2(),
+      const Card3(),
       SettingsCard(changeCards: changeCards),
     ];
 
     bottomNavItems1 = <BottomNavigationBarItem>[
       const BottomNavigationBarItem(
         icon: Icon(Icons.dashboard),
-        label: 'Card 1',
+        label: 'Coding',
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.person),
@@ -39,7 +39,7 @@ class HomeState extends State<Home> {
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.trending_up_outlined),
-        label: 'Card 3',
+        label: 'Trends',
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.settings),
@@ -49,7 +49,6 @@ class HomeState extends State<Home> {
 
     pages2 = <Widget>[
       ExploreScreen(),
-      const Card1(),
       const Card1(),
       SettingsCard(changeCards: changeCards),
     ];
@@ -62,10 +61,6 @@ class HomeState extends State<Home> {
       const BottomNavigationBarItem(
         icon: Icon(Icons.book),
         label: 'Recipes',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.list),
-        label: 'To buy',
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.settings),
@@ -87,6 +82,8 @@ class HomeState extends State<Home> {
       widgetPages = pages1;
       widgetNavBarItems = bottomNavItems1;
     }
+
+    _selectedCardIndex = widgetPages!.length - 1;
     setState(() {});
   }
 

@@ -45,7 +45,7 @@ class SettingsCardState extends State<SettingsCard> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                'Let\'s change the settings!',
+                'Change the settings!',
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
             ),

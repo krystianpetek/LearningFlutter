@@ -47,11 +47,11 @@ class TodayRecipeListView extends StatelessWidget {
 
   Widget buildCard(ExploreRecipe recipe) {
     if (recipe.cardType == RecipeCardType.card1) {
-      return RecipeCard1();
+      return RecipeCard1(recipe: recipe);
     } else if (recipe.cardType == RecipeCardType.card2) {
-      return RecipeCard2();
+      return RecipeCard2(recipe: recipe);
     } else if (recipe.cardType == RecipeCardType.card3) {
-      return RecipeCard3();
+      return RecipeCard3(recipe: recipe);
     } else {
       throw Exception('This card doesn\'t exist yet');
     }

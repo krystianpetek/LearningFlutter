@@ -2,29 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 
+import '../../models/models.dart';
+
 class RecipeCard2 extends StatelessWidget {
-  const RecipeCard2({super.key});
+  const RecipeCard2({super.key, required this.recipe});
+
+  final ExploreRecipe recipe;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
         constraints: const BoxConstraints.expand(width: 350, height: 450),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            colorFilter: ColorFilter.mode(Colors.white, BlendMode.softLight),
-            image: AssetImage('assets/magazine_pics/mag2.png'),
+            colorFilter:
+                const ColorFilter.mode(Colors.white, BlendMode.softLight),
+            image: AssetImage(recipe.backgroundImage),
             fit: BoxFit.cover,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(10.0),
           ),
         ),
         child: Column(
           children: [
-            const AuthorCard(
+            AuthorCard(
               authorName: 'Krystian Petek',
-              title: '.NET Developer',
+              title: recipe.role,
               imageProvider: AssetImage('assets/images/author.png'),
             ),
             Expanded(
@@ -33,7 +38,7 @@ class RecipeCard2 extends StatelessWidget {
                   bottom: 16,
                   right: 16,
                   child: Text(
-                    'App',
+                    recipe.title,
                     style: FoodAppTheme.lightTextTheme.headlineLarge,
                   ),
                 ),
@@ -43,7 +48,7 @@ class RecipeCard2 extends StatelessWidget {
                   child: RotatedBox(
                     quarterTurns: 3,
                     child: Text(
-                      'Demonstrate',
+                      recipe.subtitle,
                       style: FoodAppTheme.lightTextTheme.headlineLarge,
                     ),
                   ),

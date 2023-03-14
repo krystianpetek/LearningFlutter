@@ -1,6 +1,6 @@
 export 'circle_image.dart';
 export 'author.dart';
-export 'cards/home_card.dart';
+export 'cards/settings_card.dart';
 export 'friend_post_tile.dart';
 
 export 'cards/card1.dart';

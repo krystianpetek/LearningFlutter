@@ -25,7 +25,7 @@ class HomeState extends State<Home> {
       const Card3(),
       const Card2(),
       const Card1(),
-      HomeCard(changeCards: changeCards),
+      SettingsCard(changeCards: changeCards),
     ];
 
     bottomNavItems1 = <BottomNavigationBarItem>[
@@ -51,7 +51,7 @@ class HomeState extends State<Home> {
       ExploreScreen(),
       const Card1(),
       const Card1(),
-      HomeCard(changeCards: changeCards),
+      SettingsCard(changeCards: changeCards),
     ];
 
     bottomNavItems2 = <BottomNavigationBarItem>[

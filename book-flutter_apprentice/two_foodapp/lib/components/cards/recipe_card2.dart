@@ -13,7 +13,7 @@ class RecipeCard2 extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Colors.white, BlendMode.softLight),
-            image: AssetImage('assets/images/img2.png'),
+            image: AssetImage('assets/magazine_pics/mag2.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(

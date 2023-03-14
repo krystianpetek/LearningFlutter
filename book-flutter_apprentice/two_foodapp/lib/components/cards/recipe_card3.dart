@@ -15,7 +15,7 @@ class RecipeCard3 extends StatelessWidget {
         ),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/img3.png'),
+            image: AssetImage('assets/magazine_pics/mag3.png'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -38,7 +38,7 @@ class RecipeCard3 extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Coding Trends',
+                  'Recipe Trends',
                   style: FoodAppTheme.darkTextTheme.headlineMedium,
                 ),
                 const SizedBox(

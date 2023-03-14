@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/actions/dark_mode.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
@@ -31,6 +33,11 @@ class FoodAppState extends State<FoodApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.touch,
+        PointerDeviceKind.unknown
+      }),
       theme: newTheme,
       title: 'FoodApp',
       home: const Home(),

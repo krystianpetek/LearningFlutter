@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:two_foodapp/components/today_recipe_list_view.dart';
 
 import '../api/mock_foodapp_service.dart';
 import '../models/explore_data.dart';
@@ -11,17 +12,15 @@ class ExploreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: mockService.getExploreData(),
-        builder: (context, AsyncSnapshot<ExploreData> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            final recipes = snapshot.data?.todayRecipes ?? [];
-
-            return Center(
-              child: Container(child: const Text('Show TodayRecipeListView')),
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        });
+      future: mockService.getExploreData(),
+      builder: (context, AsyncSnapshot<ExploreData> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          final recipes = snapshot.data?.todayRecipes ?? [];
+          return TodayRecipeListView(recipes: recipes);
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
+    );
   }
 }

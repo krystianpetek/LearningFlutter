@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/components.dart';
-import '../models/models.dart';
+import 'package:two_foodapp/components/components.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class TodayRecipeListView extends StatelessWidget {
   const TodayRecipeListView({super.key, required this.recipes});

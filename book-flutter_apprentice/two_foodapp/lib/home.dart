@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/components/components.dart';
-import 'package:two_foodapp/screens/explore_screen.dart';
+import 'package:two_foodapp/screens/screens.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -49,7 +49,7 @@ class HomeState extends State<Home> {
 
     pages2 = <Widget>[
       ExploreScreen(),
-      const Card1(),
+      RecipesScreen(),
       SettingsCard(changeCards: changeCards),
     ];
 

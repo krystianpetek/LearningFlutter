@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 
-import '../../models/models.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class RecipeCard1 extends StatelessWidget {
   const RecipeCard1({super.key, required this.recipe});

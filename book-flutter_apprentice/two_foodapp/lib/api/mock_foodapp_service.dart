@@ -1,6 +1,6 @@
-import '../models/models.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class MockFoodAppService {
   Future<ExploreData> getExploreData() async {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:two_foodapp/components/components.dart';
-import '../api/mock_foodapp_service.dart';
-import '../models/explore_data.dart';
+import 'package:two_foodapp/api/mock_foodapp_service.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class ExploreScreen extends StatelessWidget {
   ExploreScreen({super.key});

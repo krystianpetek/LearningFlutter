@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 
-import '../../models/models.dart';
+import 'package:two_foodapp/components/components.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class RecipeCard2 extends StatelessWidget {
   const RecipeCard2({super.key, required this.recipe});
@@ -30,7 +30,7 @@ class RecipeCard2 extends StatelessWidget {
             AuthorCard(
               authorName: 'Krystian Petek',
               title: recipe.role,
-              imageProvider: AssetImage('assets/images/author.png'),
+              imageProvider: const AssetImage('assets/images/author.png'),
             ),
             Expanded(
               child: Stack(children: [

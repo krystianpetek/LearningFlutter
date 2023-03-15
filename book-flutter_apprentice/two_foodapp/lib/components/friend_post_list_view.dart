@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'components.dart';
-import '../models/models.dart';
+import 'package:two_foodapp/components/components.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class FriendPostListView extends StatelessWidget {
   const FriendPostListView({super.key, required this.friendPosts});

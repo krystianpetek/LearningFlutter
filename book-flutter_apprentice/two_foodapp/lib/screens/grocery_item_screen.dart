@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:two_foodapp/models/grocery_item.dart';
@@ -76,6 +77,8 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
             buildNameField(),
             buildImportanceField(),
             buildDateField(context),
+            buildTimeField(context),
+            buildColorPicker(context),
           ],
         ),
       ),
@@ -192,6 +195,85 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
           ],
         ),
         Text(DateFormat('yyyy-MM-dd').format(_dueDate))
+      ],
+    );
+  }
+
+  Widget buildTimeField(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Time of day',
+              style: GoogleFonts.lato(fontSize: 28),
+            ),
+            TextButton(
+              child: const Text('Select'),
+              onPressed: () async {
+                final timeOfDay = await showTimePicker(
+                    context: context, initialTime: TimeOfDay.now());
+                setState(() {
+                  if (timeOfDay != null) {
+                    _timeOfDay = timeOfDay;
+                  }
+                });
+              },
+            ),
+          ],
+        ),
+        Text(_timeOfDay.format(context)),
+      ],
+    );
+  }
+
+  Widget buildColorPicker(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Container(
+              height: 50,
+              width: 10,
+              color: _currentColor,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
+              'Color',
+              style: GoogleFonts.lato(fontSize: 28),
+            ),
+          ],
+        ),
+        TextButton(
+          child: const Text('Select'),
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: BlockPicker(
+                      pickerColor: Colors.white,
+                      onColorChanged: (color) => setState(() {
+                        _currentColor = color;
+                      }),
+                    ),
+                    actions: [
+                      TextButton(
+                        child: const Text('Save'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  );
+                });
+          },
+        ),
       ],
     );
   }

@@ -1,9 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:two_foodapp/actions/dark_mode.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
 import 'package:two_foodapp/home.dart';
+import 'package:two_foodapp/models/models.dart';
 
 void main() {
   runApp(const FoodApp());
@@ -36,11 +38,16 @@ class FoodAppState extends State<FoodApp> {
       scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
         PointerDeviceKind.mouse,
         PointerDeviceKind.touch,
-        PointerDeviceKind.unknown
+        PointerDeviceKind.unknown,
       }),
       theme: newTheme,
       title: 'FoodApp',
-      home: const Home(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (BuildContext context) => TabManager())
+        ],
+        child: const Home(),
+      ),
       actions: <Type, Action<Intent>>{
         DarkModeIntent: DarkModeAction(darkMode: darkMode)
       },

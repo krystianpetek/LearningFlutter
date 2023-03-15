@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:two_foodapp/models/models.dart';
 
 class EmptyGroceryScreen extends StatelessWidget {
   const EmptyGroceryScreen({super.key});
@@ -6,7 +8,7 @@ class EmptyGroceryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(30),
+      padding: const EdgeInsets.all(30),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +37,9 @@ class EmptyGroceryScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               color: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<TabManager>(context, listen: false).goToRecipes();
+              },
               child: const Text('Browse Recipes'),
             )
           ],

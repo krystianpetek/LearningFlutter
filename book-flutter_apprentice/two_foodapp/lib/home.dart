@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/screens/screens.dart';
+
+import 'models/models.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -64,7 +67,7 @@ class HomeState extends State<Home> {
         label: 'Recipes',
       ),
       const BottomNavigationBarItem(
-        icon: Icon(Icons.receipt),
+        icon: Icon(Icons.list),
         label: 'To buy',
       ),
       const BottomNavigationBarItem(
@@ -97,28 +100,31 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    void onNavBarTapped(int index) {
-      _selectedCardIndex = index;
-      setState(() {});
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'DemoApp / FoodApp / CodeApp',
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-      ),
-      body: widgetPages![_selectedCardIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        items: widgetNavBarItems!,
-        onTap: onNavBarTapped,
-        currentIndex: _selectedCardIndex,
-      ),
+    return Consumer<TabManager>(
+      builder: (context, tabManager, child) {
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              'DemoApp',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+          body: widgetPages![tabManager.selectedTab],
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor:
+                Theme.of(context).textSelectionTheme.selectionColor,
+            unselectedItemColor: Colors.grey,
+            showUnselectedLabels: true,
+            items: widgetNavBarItems!,
+            onTap: (index) {
+              // _selectedCardIndex = index;
+              tabManager.goToTab(index);
+            },
+            currentIndex: tabManager.selectedTab,
+          ),
+        );
+      },
     );
   }
 }

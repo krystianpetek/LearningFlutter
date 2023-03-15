@@ -48,8 +48,9 @@ class HomeState extends State<Home> {
     ];
 
     pages2 = <Widget>[
-      ExploreScreen(),
+      const ExploreScreen(),
       RecipesScreen(),
+      const GroceryScreen(),
       SettingsCard(changeCards: changeCards),
     ];
 
@@ -61,6 +62,10 @@ class HomeState extends State<Home> {
       const BottomNavigationBarItem(
         icon: Icon(Icons.book),
         label: 'Recipes',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.receipt),
+        label: 'To buy',
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.settings),

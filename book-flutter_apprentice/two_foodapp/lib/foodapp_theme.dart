@@ -6,7 +6,7 @@ class FoodAppTheme {
     bodySmall: GoogleFonts.openSans(
       // bodyText1 deprecated
       fontSize: 14.0,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
     bodyMedium: GoogleFonts.openSans(

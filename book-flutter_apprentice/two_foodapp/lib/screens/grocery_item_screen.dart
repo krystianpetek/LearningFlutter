@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:two_foodapp/models/grocery_item.dart';
 
 class GroceryItemScreen extends StatefulWidget {
@@ -71,7 +72,11 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
       body: Container(
         padding: const EdgeInsets.all(16),
         child: ListView(
-          children: [buildNameField()],
+          children: [
+            buildNameField(),
+            buildImportanceField(),
+            buildDateField(context),
+          ],
         ),
       ),
     );
@@ -104,6 +109,89 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
                 borderSide: BorderSide(color: _currentColor)),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget buildImportanceField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Importance',
+          style: GoogleFonts.lato(fontSize: 28),
+        ),
+        Wrap(
+          spacing: 10,
+          children: [
+            ChoiceChip(
+              label: Text('low', style: Theme.of(context).textTheme.bodySmall),
+              selectedColor: Colors.grey,
+              selected: _importance == Importance.low,
+              onSelected: (selected) {
+                setState(() {
+                  _importance = Importance.low;
+                });
+              },
+            ),
+            ChoiceChip(
+              label:
+                  Text('medium', style: Theme.of(context).textTheme.bodySmall),
+              selectedColor: Colors.grey,
+              selected: _importance == Importance.medium,
+              onSelected: (selected) {
+                setState(() {
+                  _importance = Importance.medium;
+                });
+              },
+            ),
+            ChoiceChip(
+              label: Text('high', style: Theme.of(context).textTheme.bodySmall),
+              selectedColor: Colors.grey,
+              selected: _importance == Importance.high,
+              onSelected: (selected) {
+                setState(() {
+                  _importance = Importance.high;
+                });
+              },
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget buildDateField(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Date',
+              style: GoogleFonts.lato(fontSize: 28),
+            ),
+            TextButton(
+              child: const Text('Select'),
+              onPressed: () async {
+                final currentDate = DateTime.now();
+                final selectedDate = await showDatePicker(
+                  context: context,
+                  initialDate: currentDate,
+                  firstDate: currentDate,
+                  lastDate: DateTime(currentDate.year + 5),
+                );
+                setState(() {
+                  if (selectedDate != null) {
+                    _dueDate = selectedDate;
+                  }
+                });
+              },
+            )
+          ],
+        ),
+        Text(DateFormat('yyyy-MM-dd').format(_dueDate))
       ],
     );
   }

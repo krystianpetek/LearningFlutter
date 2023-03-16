@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:two_foodapp/models/models.dart';
 
 class GroceryTile extends StatelessWidget {
-  final GroceryItem item;
+  final GroceryItemModel item;
   final Function(bool?)? onComplete;
   final TextDecoration textDecoration;
 
@@ -66,18 +66,18 @@ class GroceryTile extends StatelessWidget {
   }
 
   Widget buildImportance() {
-    if (item.importance == Importance.low) {
+    if (item.importance == ImportanceEnum.low) {
       return Text(
         'Low',
         style: GoogleFonts.lato(
           decoration: textDecoration,
         ),
       );
-    } else if (item.importance == Importance.medium) {
+    } else if (item.importance == ImportanceEnum.medium) {
       return Text('Medium',
           style: GoogleFonts.lato(
               fontWeight: FontWeight.w800, decoration: textDecoration));
-    } else if (item.importance == Importance.high) {
+    } else if (item.importance == ImportanceEnum.high) {
       return Text(
         'High',
         style: GoogleFonts.lato(

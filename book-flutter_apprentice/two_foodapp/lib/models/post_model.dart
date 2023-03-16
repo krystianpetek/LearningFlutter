@@ -1,11 +1,11 @@
-class Post {
+class PostModel {
   String id;
   String profileImageUrl;
   String comment;
   String foodPictureUrl;
   String timestamp;
 
-  Post({
+  PostModel({
     required this.id,
     required this.profileImageUrl,
     required this.comment,
@@ -13,8 +13,8 @@ class Post {
     required this.timestamp,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
+  factory PostModel.fromJson(Map<String, dynamic> json) {
+    return PostModel(
       id: json['id'] ?? '',
       comment: json['comment'] ?? '',
       foodPictureUrl: json['foodPictureUrl'] ?? '',

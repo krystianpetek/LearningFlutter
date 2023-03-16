@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:two_foodapp/models/grocery_item.dart';
+import 'package:two_foodapp/models/grocery_item_model.dart';
 
 class GroceryManager extends ChangeNotifier {
-  final _groceryItems = <GroceryItem>[];
+  final _groceryItems = <GroceryItemModel>[];
 
-  List<GroceryItem> get groceryItems => List.unmodifiable(_groceryItems);
+  List<GroceryItemModel> get groceryItems => List.unmodifiable(_groceryItems);
 
   void deleteItem(int index) {
     _groceryItems.removeAt(index);
     notifyListeners();
   }
 
-  void addItem(GroceryItem item) {
+  void addItem(GroceryItemModel item) {
     _groceryItems.add(item);
     notifyListeners();
   }
 
-  void updateItem(GroceryItem item, int index) {
+  void updateItem(GroceryItemModel item, int index) {
     _groceryItems[index] = item;
     notifyListeners();
   }

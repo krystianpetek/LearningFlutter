@@ -4,7 +4,7 @@ import 'package:two_foodapp/models/models.dart';
 class RecipeThumbnail extends StatelessWidget {
   const RecipeThumbnail({super.key, required this.recipe});
 
-  final SimpleRecipe recipe;
+  final SimpleRecipeModel recipe;
 
   @override
   Widget build(BuildContext context) {

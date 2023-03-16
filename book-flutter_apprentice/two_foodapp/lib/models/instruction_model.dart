@@ -1,18 +1,18 @@
-part of 'explore_recipe.dart';
+part of 'explore_recipe_model.dart';
 
-class Instruction {
+class InstructionModel {
   String imageUrl;
   String description;
   int durationInMinutes;
 
-  Instruction({
+  InstructionModel({
     required this.imageUrl,
     required this.description,
     required this.durationInMinutes,
   });
 
-  factory Instruction.fromJson(Map<String, dynamic> json) {
-    return Instruction(
+  factory InstructionModel.fromJson(Map<String, dynamic> json) {
+    return InstructionModel(
       imageUrl: json['imageUrl'] ?? '',
       description: json['description'] ?? '',
       durationInMinutes: json['durationInMinutes'] ?? '',

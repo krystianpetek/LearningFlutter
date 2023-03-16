@@ -5,7 +5,7 @@ import 'package:two_foodapp/models/models.dart';
 class RecipesGridView extends StatelessWidget {
   const RecipesGridView({super.key, required this.recipes});
 
-  final List<SimpleRecipe> recipes;
+  final List<SimpleRecipeModel> recipes;
 
   @override
   Widget build(BuildContext context) {

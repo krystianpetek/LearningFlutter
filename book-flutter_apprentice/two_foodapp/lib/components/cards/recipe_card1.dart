@@ -5,7 +5,7 @@ import 'package:two_foodapp/models/models.dart';
 
 class RecipeCard1 extends StatelessWidget {
   const RecipeCard1({super.key, required this.recipe});
-  final ExploreRecipe recipe;
+  final ExploreRecipeModel recipe;
 
   final String chef = 'Krystian Petek';
 

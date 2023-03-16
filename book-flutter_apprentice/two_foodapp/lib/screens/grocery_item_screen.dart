@@ -3,7 +3,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:two_foodapp/components/components.dart';
-import 'package:two_foodapp/models/grocery_item.dart';
+import 'package:two_foodapp/models/grocery_item_model.dart';
 import 'package:uuid/uuid.dart';
 
 class GroceryItemScreen extends StatefulWidget {
@@ -14,9 +14,9 @@ class GroceryItemScreen extends StatefulWidget {
       this.originalItem})
       : isUpdating = (originalItem != null);
 
-  final Function(GroceryItem) onCreate;
-  final Function(GroceryItem) onUpdate;
-  final GroceryItem? originalItem;
+  final Function(GroceryItemModel) onCreate;
+  final Function(GroceryItemModel) onUpdate;
+  final GroceryItemModel? originalItem;
   final bool isUpdating;
 
   @override
@@ -28,7 +28,7 @@ class GroceryItemScreen extends StatefulWidget {
 class GroceryItemScreenState extends State<GroceryItemScreen> {
   final _nameController = TextEditingController();
   String _name = '';
-  Importance _importance = Importance.low;
+  ImportanceEnum _importance = ImportanceEnum.low;
   DateTime _dueDate = DateTime.now();
   TimeOfDay _timeOfDay = TimeOfDay.now();
   Color _currentColor = Colors.green;
@@ -64,7 +64,7 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              final groceryItem = GroceryItem(
+              final groceryItem = GroceryItemModel(
                   id: widget.originalItem?.id ?? const Uuid().v1(),
                   name: _nameController.text,
                   importance: _importance,
@@ -104,7 +104,7 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
             buildQuantityField(),
             const SizedBox(height: 10.0),
             GroceryTile(
-              item: GroceryItem(
+              item: GroceryItemModel(
                 id: 'previewMode',
                 name: _name,
                 importance: _importance,
@@ -165,10 +165,10 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
             ChoiceChip(
               label: Text('low', style: Theme.of(context).textTheme.bodySmall),
               selectedColor: Colors.grey,
-              selected: _importance == Importance.low,
+              selected: _importance == ImportanceEnum.low,
               onSelected: (selected) {
                 setState(() {
-                  _importance = Importance.low;
+                  _importance = ImportanceEnum.low;
                 });
               },
             ),
@@ -176,20 +176,20 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
               label:
                   Text('medium', style: Theme.of(context).textTheme.bodySmall),
               selectedColor: Colors.grey,
-              selected: _importance == Importance.medium,
+              selected: _importance == ImportanceEnum.medium,
               onSelected: (selected) {
                 setState(() {
-                  _importance = Importance.medium;
+                  _importance = ImportanceEnum.medium;
                 });
               },
             ),
             ChoiceChip(
               label: Text('high', style: Theme.of(context).textTheme.bodySmall),
               selectedColor: Colors.grey,
-              selected: _importance == Importance.high,
+              selected: _importance == ImportanceEnum.high,
               onSelected: (selected) {
                 setState(() {
-                  _importance = Importance.high;
+                  _importance = ImportanceEnum.high;
                 });
               },
             ),

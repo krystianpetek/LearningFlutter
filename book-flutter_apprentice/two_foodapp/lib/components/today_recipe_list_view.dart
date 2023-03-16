@@ -6,7 +6,7 @@ import 'package:two_foodapp/models/models.dart';
 class TodayRecipeListView extends StatelessWidget {
   const TodayRecipeListView({super.key, required this.recipes});
 
-  final List<ExploreRecipe> recipes;
+  final List<ExploreRecipeModel> recipes;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class TodayRecipeListView extends StatelessWidget {
     );
   }
 
-  Widget buildCard(ExploreRecipe recipe) {
+  Widget buildCard(ExploreRecipeModel recipe) {
     if (recipe.cardType == RecipeCardType.card1) {
       return RecipeCard1(recipe: recipe);
     } else if (recipe.cardType == RecipeCardType.card2) {

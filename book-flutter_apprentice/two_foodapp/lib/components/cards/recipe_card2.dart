@@ -7,7 +7,7 @@ import 'package:two_foodapp/models/models.dart';
 class RecipeCard2 extends StatelessWidget {
   const RecipeCard2({super.key, required this.recipe});
 
-  final ExploreRecipe recipe;
+  final ExploreRecipeModel recipe;
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:two_foodapp/models/models.dart';
 class FriendPostTile extends StatelessWidget {
   const FriendPostTile({super.key, required this.post});
 
-  final Post post;
+  final PostModel post;
 
   @override
   Widget build(BuildContext context) {

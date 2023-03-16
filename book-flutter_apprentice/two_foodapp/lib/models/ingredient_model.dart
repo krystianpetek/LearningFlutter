@@ -1,15 +1,15 @@
-part of 'explore_recipe.dart';
+part of 'explore_recipe_model.dart';
 
-class Ingredients {
+class IngredientsModel {
   String imageUrl;
   String title;
   String source;
 
-  Ingredients(
+  IngredientsModel(
       {required this.imageUrl, required this.source, required this.title});
 
-  factory Ingredients.fromJson(Map<String, dynamic> json) {
-    return Ingredients(
+  factory IngredientsModel.fromJson(Map<String, dynamic> json) {
+    return IngredientsModel(
       imageUrl: json['imageUrl'] ?? '',
       source: json['source'] ?? '',
       title: json['title'] ?? '',

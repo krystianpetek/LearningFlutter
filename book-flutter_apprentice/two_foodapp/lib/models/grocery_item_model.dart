@@ -1,21 +1,21 @@
 import 'package:flutter/painting.dart';
 
-enum Importance {
+enum ImportanceEnum {
   low,
   medium,
   high;
 }
 
-class GroceryItem {
+class GroceryItemModel {
   final String id;
   final String name;
-  final Importance importance;
+  final ImportanceEnum importance;
   final Color color;
   final int quantity;
   final DateTime date;
   final bool isComplete;
 
-  GroceryItem({
+  GroceryItemModel({
     required this.id,
     required this.name,
     required this.importance,
@@ -25,21 +25,22 @@ class GroceryItem {
     this.isComplete = false,
   });
 
-  GroceryItem copyWith({
+  GroceryItemModel copyWith({
     String? id,
     String? name,
-    Importance? importance,
+    ImportanceEnum? importance,
     Color? color,
     int? quantity,
     DateTime? date,
     bool? isComplete,
   }) {
-    return GroceryItem(
+    return GroceryItemModel(
         id: id ?? this.id,
         name: name ?? this.name,
         importance: importance ?? this.importance,
         color: color ?? this.color,
         quantity: quantity ?? this.quantity,
-        date: date ?? this.date);
+        date: date ?? this.date,
+        isComplete: isComplete ?? this.isComplete);
   }
 }

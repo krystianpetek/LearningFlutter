@@ -50,7 +50,7 @@ class ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: mockService.getExploreData(),
-      builder: (context, AsyncSnapshot<ExploreData> snapshot) {
+      builder: (context, AsyncSnapshot<ExploreDataModel> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView(
             controller: _scrollController,

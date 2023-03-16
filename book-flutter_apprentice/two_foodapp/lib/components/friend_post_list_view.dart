@@ -6,7 +6,7 @@ import 'package:two_foodapp/models/models.dart';
 class FriendPostListView extends StatelessWidget {
   const FriendPostListView({super.key, required this.friendPosts});
 
-  final List<Post> friendPosts;
+  final List<PostModel> friendPosts;
 
   @override
   Widget build(BuildContext context) {

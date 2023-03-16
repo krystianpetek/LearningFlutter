@@ -1,4 +1,4 @@
-class SimpleRecipe {
+class SimpleRecipeModel {
   String id;
   String dishImage;
   String title;
@@ -6,7 +6,7 @@ class SimpleRecipe {
   String source;
   List<String> information;
 
-  SimpleRecipe({
+  SimpleRecipeModel({
     required this.id,
     required this.dishImage,
     required this.title,
@@ -15,8 +15,8 @@ class SimpleRecipe {
     required this.information,
   });
 
-  factory SimpleRecipe.fromJson(Map<String, dynamic> json) {
-    return SimpleRecipe(
+  factory SimpleRecipeModel.fromJson(Map<String, dynamic> json) {
+    return SimpleRecipeModel(
       id: json['id'] as String,
       dishImage: json['dishImage'] as String,
       title: json['title'] as String,

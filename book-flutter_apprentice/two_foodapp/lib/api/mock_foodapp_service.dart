@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:two_foodapp/models/models.dart';
 
 class MockFoodAppService {
-  Future<ExploreData> getExploreData() async {
+  Future<ExploreDataModel> getExploreData() async {
     final todayRecipes = await _getTodayRecipes();
     final friendPosts = await _getFriendFeed();
 
-    return ExploreData(todayRecipes, friendPosts);
+    return ExploreDataModel(todayRecipes, friendPosts);
   }
 
-  Future<List<ExploreRecipe>> _getTodayRecipes() async {
+  Future<List<ExploreRecipeModel>> _getTodayRecipes() async {
     await Future.delayed(const Duration(milliseconds: 1000));
 
     final dataString =
@@ -18,16 +18,17 @@ class MockFoodAppService {
     final Map<String, dynamic> json = jsonDecode(dataString);
 
     if (json['recipes'] != null) {
-      final recipes = <ExploreRecipe>[];
+      final recipes = <ExploreRecipeModel>[];
 
-      json['recipes'].forEach((v) => {recipes.add(ExploreRecipe.fromJson(v))});
+      json['recipes']
+          .forEach((v) => {recipes.add(ExploreRecipeModel.fromJson(v))});
       return recipes;
     } else {
       return [];
     }
   }
 
-  Future<List<Post>> _getFriendFeed() async {
+  Future<List<PostModel>> _getFriendFeed() async {
     await Future.delayed(const Duration(microseconds: 1000));
 
     final dataString =
@@ -35,9 +36,9 @@ class MockFoodAppService {
     final Map<String, dynamic> json = jsonDecode(dataString);
 
     if (json['feed'] != null) {
-      final posts = <Post>[];
+      final posts = <PostModel>[];
       json['feed'].forEach((v) {
-        posts.add(Post.fromJson(v));
+        posts.add(PostModel.fromJson(v));
       });
       return posts;
     } else {
@@ -45,7 +46,7 @@ class MockFoodAppService {
     }
   }
 
-  Future<List<SimpleRecipe>> getRecipes() async {
+  Future<List<SimpleRecipeModel>> getRecipes() async {
     await Future.delayed(const Duration(milliseconds: 1000));
 
     final dataString =
@@ -53,9 +54,10 @@ class MockFoodAppService {
     final Map<String, dynamic> json = jsonDecode(dataString);
 
     if (json['recipes'] != null) {
-      final recipes = <SimpleRecipe>[];
+      final recipes = <SimpleRecipeModel>[];
 
-      json['recipes'].forEach((v) => {recipes.add(SimpleRecipe.fromJson(v))});
+      json['recipes']
+          .forEach((v) => {recipes.add(SimpleRecipeModel.fromJson(v))});
       return recipes;
     } else {
       return [];

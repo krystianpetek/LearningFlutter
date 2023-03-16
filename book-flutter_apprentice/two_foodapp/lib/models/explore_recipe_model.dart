@@ -1,5 +1,5 @@
-part 'ingredient.dart';
-part 'instruction.dart';
+part 'ingredient_model.dart';
+part 'instruction_model.dart';
 
 class RecipeCardType {
   static const card1 = 'card1';
@@ -7,7 +7,7 @@ class RecipeCardType {
   static const card3 = 'card3';
 }
 
-class ExploreRecipe {
+class ExploreRecipeModel {
   String id;
   String cardType;
   String title;
@@ -24,10 +24,10 @@ class ExploreRecipe {
   List<String> tags;
   String description;
   String source;
-  List<Ingredients> ingredients;
-  List<Instruction> instructions;
+  List<IngredientsModel> ingredients;
+  List<InstructionModel> instructions;
 
-  ExploreRecipe({
+  ExploreRecipeModel({
     required this.id,
     required this.cardType,
     required this.title,
@@ -48,23 +48,23 @@ class ExploreRecipe {
     this.instructions = const [],
   });
 
-  factory ExploreRecipe.fromJson(Map<String, dynamic> json) {
-    final ingredients = <Ingredients>[];
-    final instructions = <Instruction>[];
+  factory ExploreRecipeModel.fromJson(Map<String, dynamic> json) {
+    final ingredients = <IngredientsModel>[];
+    final instructions = <InstructionModel>[];
 
     if (json['ingredients'] != null) {
       json['ingredients'].forEach((v) {
-        ingredients.add(Ingredients.fromJson(v));
+        ingredients.add(IngredientsModel.fromJson(v));
       });
     }
 
     if (json['instructions'] != null) {
       json['instructions'].forEach((v) {
-        instructions.add(Instruction.fromJson(v));
+        instructions.add(InstructionModel.fromJson(v));
       });
     }
 
-    return ExploreRecipe(
+    return ExploreRecipeModel(
       id: json['id'] ?? '',
       cardType: json['cardType'] ?? '',
       title: json['title'] ?? '',

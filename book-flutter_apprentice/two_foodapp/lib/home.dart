@@ -110,7 +110,10 @@ class HomeState extends State<Home> {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
-          body: widgetPages![tabManager.selectedTab],
+          body: IndexedStack(
+            index: tabManager.selectedTab,
+            children: widgetPages!,
+          ),
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor:
                 Theme.of(context).textSelectionTheme.selectionColor,

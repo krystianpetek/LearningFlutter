@@ -45,7 +45,7 @@ class FoodAppState extends State<FoodApp> {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-              create: (BuildContext context) => TabManager()),
+              create: (BuildContext context) => AppStateManager()),
           ChangeNotifierProvider(
               create: (BuildContext context) => GroceryManager())
         ],

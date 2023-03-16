@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TabManager extends ChangeNotifier {
+class AppStateManager extends ChangeNotifier {
   int selectedTab = 1;
 
   void goToTab(index) {

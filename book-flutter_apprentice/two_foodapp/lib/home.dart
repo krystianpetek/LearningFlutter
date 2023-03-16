@@ -100,7 +100,7 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<TabManager>(
+    return Consumer<AppStateManager>(
       builder: (context, tabManager, child) {
         return Scaffold(
           appBar: AppBar(

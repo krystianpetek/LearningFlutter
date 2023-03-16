@@ -51,7 +51,7 @@ class GroceryListScreen extends StatelessWidget {
                         originalItem: item,
                         onCreate: (item) {},
                         onUpdate: (item) {
-                          manager.updateItem(item, index);
+                          manager.updateItem(item);
                           Navigator.pop(context);
                         },
                       ),

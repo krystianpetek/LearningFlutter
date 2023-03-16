@@ -3,7 +3,6 @@ import 'package:two_foodapp/models/grocery_item_model.dart';
 
 class GroceryManager extends ChangeNotifier {
   final _groceryItems = <GroceryItemModel>[];
-
   List<GroceryItemModel> get groceryItems => List.unmodifiable(_groceryItems);
 
   void deleteItem(int index) {
@@ -16,7 +15,8 @@ class GroceryManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateItem(GroceryItemModel item, int index) {
+  void updateItem(GroceryItemModel item) {
+    final index = _groceryItems.indexWhere((element) => element.id == item.id);
     _groceryItems[index] = item;
     notifyListeners();
   }
@@ -25,5 +25,13 @@ class GroceryManager extends ChangeNotifier {
     final item = _groceryItems[index];
     _groceryItems[index] = item.copyWith(isComplete: change);
     notifyListeners();
+  }
+
+  GroceryItemModel? getGroceryItem(String id) {
+    final int index = _groceryItems
+        .indexWhere((GroceryItemModel element) => element.id == id);
+    if (index < 0) return null;
+
+    return groceryItems[index];
   }
 }

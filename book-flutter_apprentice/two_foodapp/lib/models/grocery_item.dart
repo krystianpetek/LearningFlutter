@@ -22,7 +22,7 @@ class GroceryItem {
     required this.color,
     required this.quantity,
     required this.date,
-    this.isComplete = true,
+    this.isComplete = false,
   });
 
   GroceryItem copyWith({

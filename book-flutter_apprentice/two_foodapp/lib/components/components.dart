@@ -2,6 +2,7 @@ export 'circle_image.dart';
 export 'author.dart';
 export 'friend_post_tile.dart';
 export 'recipe_thumbnail.dart';
+export 'grocery_tile.dart';
 
 export 'cards/card1.dart';
 export 'cards/card2.dart';

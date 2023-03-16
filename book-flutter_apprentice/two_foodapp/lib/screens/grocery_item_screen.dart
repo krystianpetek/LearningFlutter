@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/models/grocery_item.dart';
 
 class GroceryItemScreen extends StatefulWidget {
@@ -75,10 +76,28 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
         child: ListView(
           children: [
             buildNameField(),
+            const SizedBox(height: 10.0),
             buildImportanceField(),
+            const SizedBox(height: 10.0),
             buildDateField(context),
+            const SizedBox(height: 10.0),
             buildTimeField(context),
+            const SizedBox(height: 10.0),
             buildColorPicker(context),
+            const SizedBox(height: 10.0),
+            buildQuantityField(),
+            const SizedBox(height: 10.0),
+            GroceryTile(
+              item: GroceryItem(
+                id: 'previewMode',
+                name: _name,
+                importance: _importance,
+                color: _currentColor,
+                quantity: _currentSliderValue,
+                date: DateTime(_dueDate.year, _dueDate.month, _dueDate.day,
+                    _timeOfDay.hour, _timeOfDay.minute),
+              ),
+            ),
           ],
         ),
       ),
@@ -274,6 +293,42 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
                 });
           },
         ),
+      ],
+    );
+  }
+
+  Widget buildQuantityField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Text(
+              'Quantity',
+              style: GoogleFonts.lato(fontSize: 28),
+            ),
+            const SizedBox(width: 16),
+            Text(
+              '${_currentSliderValue.toInt()}',
+              style: GoogleFonts.lato(fontSize: 18),
+            )
+          ],
+        ),
+        Slider(
+            value: _currentSliderValue.toDouble(),
+            inactiveColor: _currentColor.withOpacity(0.5),
+            activeColor: _currentColor,
+            min: 0.0,
+            max: 100.0,
+            divisions: 100,
+            label: '${_currentSliderValue.toInt()}',
+            onChanged: (double value) {
+              setState(() {
+                _currentSliderValue = value.toInt();
+              });
+            }),
       ],
     );
   }

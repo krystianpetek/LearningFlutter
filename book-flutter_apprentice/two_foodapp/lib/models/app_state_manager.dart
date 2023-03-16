@@ -14,6 +14,7 @@ class FoodAppTab {
 }
 
 class AppStateManager extends ChangeNotifier {
+  bool _loggedIn = false;
   int selectedTab = 1;
 
   void goToTab(index) {

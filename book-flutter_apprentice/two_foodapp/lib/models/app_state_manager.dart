@@ -35,6 +35,12 @@ class AppStateManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  void onboarded() async {
+    _onboardingComplete = true;
+    await _appCache.completeOnboarding();
+    notifyListeners();
+  }
+
   void goToTab(index) {
     _selectedTab = index;
     notifyListeners();

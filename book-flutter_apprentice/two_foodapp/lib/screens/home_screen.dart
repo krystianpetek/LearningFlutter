@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/screens/screens.dart';
 
-import 'models/models.dart';
+import '../models/models.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -111,7 +111,7 @@ class HomeState extends State<Home> {
             ),
           ),
           body: IndexedStack(
-            index: tabManager.selectedTab,
+            index: tabManager.getSelectedTab,
             children: widgetPages!,
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -124,7 +124,7 @@ class HomeState extends State<Home> {
               // _selectedCardIndex = index;
               tabManager.goToTab(index);
             },
-            currentIndex: tabManager.selectedTab,
+            currentIndex: tabManager.getSelectedTab,
           ),
         );
       },

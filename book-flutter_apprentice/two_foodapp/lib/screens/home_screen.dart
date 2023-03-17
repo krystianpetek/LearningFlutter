@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/screens/screens.dart';
@@ -6,17 +7,15 @@ import 'package:two_foodapp/screens/screens.dart';
 import '../models/models.dart';
 
 class Home extends StatefulWidget {
-  const Home({
-    super.key,
-  });
+  Home({super.key, required this.currentTab});
+
+  late int currentTab;
 
   @override
   HomeState createState() => HomeState();
 }
 
 class HomeState extends State<Home> {
-  int _selectedCardIndex = 1;
-
   List<Widget>? pages1;
   List<Widget>? pages2;
   List<BottomNavigationBarItem>? bottomNavItems1;
@@ -91,7 +90,7 @@ class HomeState extends State<Home> {
       widgetNavBarItems = bottomNavItems1;
     }
 
-    _selectedCardIndex = widgetPages!.length - 1;
+    widget.currentTab = widgetPages!.length - 1;
     setState(() {});
   }
 
@@ -100,34 +99,29 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AppStateManager>(
-      builder: (context, tabManager, child) {
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              'DemoApp',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-          ),
-          body: IndexedStack(
-            index: tabManager.getSelectedTab,
-            children: widgetPages!,
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor:
-                Theme.of(context).textSelectionTheme.selectionColor,
-            unselectedItemColor: Colors.grey,
-            showUnselectedLabels: true,
-            items: widgetNavBarItems!,
-            onTap: (index) {
-              // _selectedCardIndex = index;
-              tabManager.goToTab(index);
-            },
-            currentIndex: tabManager.getSelectedTab,
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'DemoApp',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+      ),
+      body: IndexedStack(
+        index: widget.currentTab,
+        children: widgetPages!,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        items: widgetNavBarItems!,
+        currentIndex: widget.currentTab,
+        onTap: (index) {
+          Provider.of<AppStateManager>(context, listen: false).goToTab(index);
+          context.goNamed('home', params: {'tab': '$index'});
+        },
+      ),
     );
   }
 }

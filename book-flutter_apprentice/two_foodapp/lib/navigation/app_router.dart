@@ -30,11 +30,10 @@ class AppRouter {
         path: '/:tab',
         name: 'home',
         builder: (context, state) {
-          final tab = int.tryParse(state.params['tab'] ?? '') ?? 0;
-          return Home();
+          final tab = int.tryParse(state.params['tab'] ?? '') ?? 1;
+          return Home(key: state.pageKey, currentTab: tab);
         },
       )
-      // home
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(

@@ -1,9 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:two_foodapp/actions/dark_mode.dart';
 import 'package:two_foodapp/foodapp_theme.dart';
-import 'package:two_foodapp/home.dart';
 import 'package:two_foodapp/models/models.dart';
 import 'package:two_foodapp/navigation/app_router.dart';
 

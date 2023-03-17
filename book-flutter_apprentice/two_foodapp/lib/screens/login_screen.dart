@@ -52,7 +52,10 @@ class LoginScreen extends StatelessWidget {
           'Login',
           style: TextStyle(color: Colors.white),
         ),
-        onPressed: () async {},
+        onPressed: () async {
+          Provider.of<AppStateManager>(context, listen: false)
+              .login('mockUsername', 'mockPassword');
+        },
       ),
     );
   }

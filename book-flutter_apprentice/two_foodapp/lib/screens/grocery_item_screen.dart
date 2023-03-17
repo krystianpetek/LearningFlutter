@@ -93,6 +93,7 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
           'Grocery Item',
           style: GoogleFonts.lato(fontWeight: FontWeight.w600),
         ),
+        centerTitle: true,
       ),
       body: Container(
         padding: const EdgeInsets.all(16),

@@ -102,6 +102,7 @@ class HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        actions: <Widget>[profileButton(widget.currentTab)],
         title: Text(
           'DemoApp',
           style: Theme.of(context).textTheme.headlineSmall,
@@ -120,6 +121,21 @@ class HomeState extends State<Home> {
         onTap: (index) {
           // Provider.of<AppStateManager>(context, listen: false).goToTab(index);
           context.goNamed('home', params: {'tab': '$index'});
+        },
+      ),
+    );
+  }
+
+  Widget profileButton(int currentTab) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 16),
+      child: GestureDetector(
+        child: const CircleAvatar(
+          backgroundColor: Colors.transparent,
+          backgroundImage: AssetImage('assets/images/author.png'),
+        ),
+        onTap: () {
+          context.goNamed('profile', params: {'tab': '$currentTab'});
         },
       ),
     );

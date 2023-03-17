@@ -27,31 +27,51 @@ class AppRouter {
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-          path: '/:tab',
-          name: 'home',
-          builder: (context, state) {
-            final tab = int.tryParse(state.params['tab'] ?? '') ?? 1;
-            return Home(key: state.pageKey, currentTab: tab);
-          },
-          routes: [
-            GoRoute(
-              path: 'item/:id',
-              name: 'item',
-              builder: (context, state) {
-                final itemId = state.params['id'] ?? '';
-                final item = groceryManager.getGroceryItem(itemId);
-                return GroceryItemScreen(
-                  originalItem: item,
-                  onCreate: (item) {
-                    groceryManager.addItem(item);
-                  },
-                  onUpdate: (item) {
-                    groceryManager.updateItem(item);
-                  },
-                );
-              },
-            )
-          ]),
+        path: '/:tab',
+        name: 'home',
+        builder: (context, state) {
+          final tab = int.tryParse(state.params['tab'] ?? '') ?? 1;
+          return Home(key: state.pageKey, currentTab: tab);
+        },
+        routes: [
+          GoRoute(
+            path: 'item/:id',
+            name: 'item',
+            builder: (context, state) {
+              final itemId = state.params['id'] ?? '';
+              final item = groceryManager.getGroceryItem(itemId);
+              return GroceryItemScreen(
+                originalItem: item,
+                onCreate: (item) {
+                  groceryManager.addItem(item);
+                },
+                onUpdate: (item) {
+                  groceryManager.updateItem(item);
+                },
+              );
+            },
+          ),
+          GoRoute(
+            name: 'profile',
+            path: 'profile',
+            builder: (context, state) {
+              final tab = int.tryParse(state.params['tab'] ?? '') ?? 0;
+              return ProfileScreen(
+                  user: profileManager.getUser, currentTab: tab);
+            },
+            routes: [
+              GoRoute(
+                path: 'rw',
+                name: 'rw',
+                // not supported WebViewScreen
+                redirect: (context, state) {
+                  const LoginScreen();
+                },
+              )
+            ],
+          )
+        ],
+      ),
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(

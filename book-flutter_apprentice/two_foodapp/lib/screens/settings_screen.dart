@@ -10,17 +10,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class SettingsScreenState extends State<SettingsScreen> {
-  String stateMode = 'LightMode';
   String cardMode = 'Developer';
-
-  changeStateMode() {
-    if (Theme.of(context).brightness.name == Brightness.dark.name) {
-      stateMode = 'LightMode';
-    } else {
-      stateMode = 'DarkMode';
-    }
-    setState(() {});
-  }
 
   changeCardMode() {
     if (cardMode == "Developer") {
@@ -51,20 +41,6 @@ class SettingsScreenState extends State<SettingsScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              changeStateMode(); // only text change
-              // Actions.invoke(context, DarkModeIntent(darkMode: () {}));
-            },
-            style: Theme.of(context).elevatedButtonTheme.style,
-            child: const Text('Change mode'),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'Current state: $stateMode',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () {
               widget.changeCards();
               changeCardMode();
             },
@@ -81,3 +57,6 @@ class SettingsScreenState extends State<SettingsScreen> {
     );
   }
 }
+
+// Actions.invoke(context, DarkModeIntent(darkMode: () {}));
+// invoke action in event

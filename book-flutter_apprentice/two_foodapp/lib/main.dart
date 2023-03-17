@@ -6,11 +6,11 @@ import 'package:two_foodapp/models/models.dart';
 import 'package:two_foodapp/navigation/app_router.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   final appStateManager = AppStateManager();
+  appStateManager.initializeApp;
 
-  runApp(FoodApp(
-    appStateManager: appStateManager,
-  ));
+  runApp(FoodApp(appStateManager: appStateManager));
 }
 
 class FoodApp extends StatefulWidget {
@@ -36,11 +36,11 @@ class FoodAppState extends State<FoodApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-            create: (BuildContext context) => AppStateManager()),
+            create: (BuildContext context) => _groceryManager),
         ChangeNotifierProvider(
-            create: (BuildContext context) => GroceryManager()),
+            create: (BuildContext context) => _profileManager),
         ChangeNotifierProvider(
-            create: (BuildContext context) => ProfileManager()),
+            create: (BuildContext context) => widget.appStateManager),
       ],
       child: Consumer<ProfileManager>(
         builder: (context, value, child) {
@@ -52,6 +52,7 @@ class FoodAppState extends State<FoodApp> {
           }
 
           final router = _appRouter.router;
+
           return MaterialApp.router(
             theme: theme,
             title: 'FoodApp',

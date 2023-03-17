@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:two_foodapp/components/components.dart';
+import 'package:two_foodapp/models/app_state_manager.dart';
 import 'package:two_foodapp/models/grocery_item_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -78,6 +80,11 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
               } else {
                 widget.onCreate(groceryItem);
               }
+
+              context.goNamed(
+                'home',
+                params: {'tab': '${FoodAppTab.toBuy}'},
+              );
             },
           ),
         ],

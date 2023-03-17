@@ -27,7 +27,7 @@ class HomeState extends State<Home> {
       const Card1(),
       const Card2(),
       const Card3(),
-      SettingsCard(changeCards: changeCards),
+      SettingsScreen(changeCards: changeCards),
     ];
 
     bottomNavItems1 = <BottomNavigationBarItem>[
@@ -53,7 +53,7 @@ class HomeState extends State<Home> {
       const ExploreScreen(),
       RecipesScreen(),
       const GroceryScreen(),
-      SettingsCard(changeCards: changeCards),
+      SettingsScreen(changeCards: changeCards),
     ];
 
     bottomNavItems2 = <BottomNavigationBarItem>[
@@ -118,7 +118,7 @@ class HomeState extends State<Home> {
         items: widgetNavBarItems!,
         currentIndex: widget.currentTab,
         onTap: (index) {
-          Provider.of<AppStateManager>(context, listen: false).goToTab(index);
+          // Provider.of<AppStateManager>(context, listen: false).goToTab(index);
           context.goNamed('home', params: {'tab': '$index'});
         },
       ),

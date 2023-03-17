@@ -37,7 +37,6 @@ class EmptyGroceryScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30)),
               color: Colors.green,
               onPressed: () {
-                // Provider.of<AppStateManager>(context, listen: false).goToRecipes();
                 context.goNamed(
                   'home',
                   params: {'tab': '${FoodAppTab.recipes}'},

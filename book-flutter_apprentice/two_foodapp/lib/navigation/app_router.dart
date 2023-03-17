@@ -27,13 +27,31 @@ class AppRouter {
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-        path: '/:tab',
-        name: 'home',
-        builder: (context, state) {
-          final tab = int.tryParse(state.params['tab'] ?? '') ?? 1;
-          return Home(key: state.pageKey, currentTab: tab);
-        },
-      )
+          path: '/:tab',
+          name: 'home',
+          builder: (context, state) {
+            final tab = int.tryParse(state.params['tab'] ?? '') ?? 1;
+            return Home(key: state.pageKey, currentTab: tab);
+          },
+          routes: [
+            GoRoute(
+              path: 'item/:id',
+              name: 'item',
+              builder: (context, state) {
+                final itemId = state.params['id'] ?? '';
+                final item = groceryManager.getGroceryItem(itemId);
+                return GroceryItemScreen(
+                  originalItem: item,
+                  onCreate: (item) {
+                    groceryManager.addItem(item);
+                  },
+                  onUpdate: (item) {
+                    groceryManager.updateItem(item);
+                  },
+                );
+              },
+            )
+          ]),
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(

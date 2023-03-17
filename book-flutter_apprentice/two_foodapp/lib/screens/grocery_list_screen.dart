@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:two_foodapp/components/components.dart';
 import 'package:two_foodapp/models/models.dart';
 import 'package:two_foodapp/screens/screens.dart';
@@ -44,27 +45,19 @@ class GroceryListScreen extends StatelessWidget {
                   },
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => GroceryItemScreen(
-                        originalItem: item,
-                        onCreate: (item) {},
-                        onUpdate: (item) {
-                          manager.updateItem(item);
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
+                  context.goNamed(
+                    'item',
+                    params: {
+                      'tab': '${FoodAppTab.toBuy}',
+                      'id': item.id,
+                    },
                   );
                 },
               ),
             );
           },
           separatorBuilder: (context, index) {
-            return const SizedBox(
-              height: 16,
-            );
+            return const SizedBox(height: 16);
           },
           itemCount: groceryItems.length),
     );

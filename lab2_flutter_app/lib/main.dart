@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:three_recipe_finder/widgets/user_widget.dart';
+import 'package:lab2_flutter_app/widgets/user_widget.dart';
 
 import 'models/user.dart';
 
